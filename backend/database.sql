@@ -1,0 +1,9 @@
+CREATE DATABASE People;
+
+CREATE TABLE Person(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    mobileNumber VARCHAR(20) NOT NULL,
+    dateOfBirth DATE NOT NULL
+);
