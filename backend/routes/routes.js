@@ -2,14 +2,12 @@ import express from "express";
 import { check } from "express-validator";
 import {
   getAllEntities,
-  getAnEntity,
   addEntity,
   updateEntity,
   deleteEntity,
 } from "../controllers/controller.js";
 const router = express.Router();
 
-import pool from "../db.js";
 
 //ROUTES//
 
@@ -19,10 +17,10 @@ router.post(
   [
     check("name", "Name is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
-    check("mobileNumber", "Please include a valid mobile number").isLength({
+    check("mobilenumber", "Please include a valid mobile number").isLength({
       min: 10,
     }),
-    check("dateOfBirth", "Date of birth is required").isISO8601().toDate(),
+    check("dateofbirth", "Date of birth is required").isISO8601().toDate(),
   ],
   addEntity
 );
@@ -30,8 +28,6 @@ router.post(
 //get all entities
 router.get("/", getAllEntities);
 
-//get an entity
-router.get("/:id", getAnEntity);
 
 //update an entity
 router.put(
@@ -39,10 +35,10 @@ router.put(
   [
     check("name", "Name is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
-    check("mobileNumber", "Please include a valid mobile number").isLength({
+    check("mobilenumber", "Please include a valid mobile number").isLength({
       min: 10,
     }),
-    check("dateOfBirth", "Date of birth is required").isISO8601().toDate(),
+    check("dateofbirth", "Date of birth is required").isISO8601().toDate(),
   ],
   updateEntity
 );
